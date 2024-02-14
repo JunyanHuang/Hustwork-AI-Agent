@@ -4,7 +4,7 @@
 课设更多，我懂!
 
 论文，实验报告做不完，我都懂!
-### 就让见鬼作业助手来拯救你<img src="./laugh.png" width = "30" height = "30"  align=center />
+### 就让见鬼作业助手来拯救你
 
 ## 见鬼作业助手 （Hustwork Ai Agent）: 你的作业神器！
 使用GPT4，定制化作业助手。
