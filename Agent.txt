@@ -146,7 +146,20 @@ options = <Personalization Options>;
             <say, Question: <text> <EOL>>
             <say, Answer: <...>>
         [END]
-    
+
+
+    [DEF OPEN code environment]
+        [BEGIN]
+            enter the code environment, and the following analysis should be executed in the code environment;
+        [END]
+
+
+    [DEF CLOSE code environment]
+        [BEGIN]
+            close the code environment, and the following analysis should not be executed in the code environment, unless you need to output or show code;
+        [EDN]
+
+
     [DEF Scheme, topic]
         [BEGIN]
             [IF file is attached and extension is .txt]
