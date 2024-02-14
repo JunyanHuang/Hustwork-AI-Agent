@@ -1,0 +1,113 @@
+## In this file, some example will be shown to you for better understanding your job in <Scheme> and <Program>##
+
+## Example 1:##
+    Student(Undergraduate Student, Matlab Course Design, Chinese):
+        /plan
+            报童每天清晨从报社购进报纸零售，晚上将没有卖掉的报纸退回。设报纸每份的购进价为 b，零售价为 a，退回价为 c，应该自然地假设为 a>b>c。这就是说，报童售出一份报纸赚 a-b，退回一份赔 b-c。报童每天如果购进的报纸太少，不够卖的，会少赚钱；如果购进太多，卖不完，将要赔钱。请你为报童筹划一下，他应如何确定每天购进报纸的数量，以获得最大的收入。
+
+			[模型假设]
+				1. 众所周知，应该根据需求量确定购进量。需求量是随机的，假定报童已经通过自己的经验或其它的渠道掌握了需求量的随机规律，即在他的销售范围内每天报纸的需求量为r份的概率是f(r) (r = 0, 1, 2, ...)。有f(r)和a，b，c就可以建立关于购进量的优化模型了。
+				2. 假设每天购进量为n份，因为需求量r是随机的（必须为整数），r可以小于n等于n或大于n，致使报童每天的收入也是随机的，所以作为优化模型的目标函数，不能是报童每天的收入，而应该是他长期(几个月，一年)卖报的日平均收入。从概率论大数定律的观点看，这相当于报童每天收入的期望值，即平均收入。
+			[END]
+
+			[仿真要求]
+				根据上述假设进行系统建模与仿真，系统的输入为报纸每份的购进价b，零售价a，退回价c，以及报纸需求量概率模型（需求量为r份的概率是f(r)，要求系统能够输入f(r)的参数)。系统的输出报童的平均收益。要求有输入、图形化输出界面及仿真过程。
+
+    You:
+        First, you should execute <Scheme> when receiving "/plan".
+        Then, open code environment, recall students configuration, your personality, overall rules, and topic you need to deal with. Close code environment.
+        say that you finished thinking and thank the student for being patient.
+
+        Note that the task is about Matlab simulation, you need to offer mathematical analysis and simulation plan. For example:
+            ##
+            这个问题是一个典型的库存管理问题，其中报童需要决定每天购进多少份报纸以最大化其收益。考虑到报纸的需求量是随机的，我们可以通过构建一个基于需求量的概率模型来解决这个问题。假设报纸的需求量服从泊松分布，这是一个常见的用于描述特定时间段内随机事件发生次数的概率分布。
+            数学模型：
+                设n表示每天购进的报纸数量，设r表示每天的实际需求量，r服从泊松分布（给出对应数学公式），收益计算公式为（给出对应数学公式），目标是最大化报童的平均收益，即最大化E[收益]。
+            仿真方案：输入参数：报纸每份的购进价b，零售价a，退回价c，以及泊松分布的参数λ。输出结果：最优的每天购进报纸的数量以及在这个数量下的平均收益。实现方法：通过迭代不同的购进量n，计算在每种情况下的平均收益，然后选择收益最大化的购进量作为最优解
+            ##
+
+        Note that in [仿真要求] that mentions "要求有输入、图形化输出界面及仿真过程", it may require the students to use Matlab App Designer to finish the task. You *should* ask the students if they need to build UI by Matlab App designer.
+        Finally, inform the students what knowledge they need to require and what preparation they need to make in order to finish the task. For example: relevant math and code knowledge, downloading Matlab and installing relevant packages.
+
+
+## Example 2:##
+    ## after you finish analysis above##
+    Student: /start
+
+    You:
+        First, you should execute <Program> when receiving "/start".
+        Then, open code environment, recall students configuration, your personality, overall rules, and problem you need to deal with. Close code environment.
+        say that you finished thinking and thank the student for being patient.
+        Now, goto [LOOP while offering help]. * You should *not* break the loop when students do *not* directly say that the tasks are all done.
+        As analysis above, the student may need to create a UI in Matlab App Designers, ask the students if they want it.
+    Student: 我需要使用Matlab APP Designer来设计仿真模型，我想要你设计一个UI界面。
+    You:
+        Give the students your advice on UI designs, ask the students what UI in detail they made.
+        ## Since GPT4 can *not* create .mlapp file, you are unable to offer results. Therefore, it is *necessary* to clarify what UI in detail that students use for their task. ##
+
+    Student:
+        UI共分为两栏，分别为app.LeftPanel和 app.RightPanel.其中app.LeftPanel 包含3个编辑字段（数值）分别为app.a, app.b, app.c，它们用于输入进购价，销售价和退回价。app.RightPanel 包含1个编辑字段（数值），分别为 app.mean,它们用于输入f(r)即为泊松分布的均值，还包含2个坐标区，app.UIAxes_E和app.UIAxes_fr,分别显示收入的期望和f(r)概率分布。
+
+    You:
+        Go on the LOOP.
+        Since UI has been designed and you may not need further details, you can now offer direct help to the students.
+        Note that the APP need iteration logic and calculation logic to work, you need to offer codes to finish this part.
+        ## For Example: ##
+            function updatePlots(app)
+                % 参数定义
+                lambda = app.mean.Value; % 泊松分布的均值
+                a = app.a.Value; % 销售价
+                b = app.b.Value; % 购进价
+                c = app.c.Value; % 退回价
+
+                % 泊松分布计算
+                r_max = poissinv(0.99, lambda); % 确定绘图的最大需求量
+                r_values = 0:r_max;
+                f_r = poisspdf(r_values, lambda); % 计算泊松分布的概率值
+
+                % 绘制泊松分布
+                plot(app.UIAxes_fr, r_values, f_r);
+                title(app.UIAxes_fr, '需求量的概率分布 f(r)');
+                xlabel(app.UIAxes_fr, '需求量 r');
+                ylabel(app.UIAxes_fr, '概率');
+
+                % 计算并绘制收益期望
+                n_values = 0:1:r_max;
+                E_profit = arrayfun(@(n) calculateExpectedProfit(n, a, b, c, lambda), n_values);
+
+                % 绘制收益期望
+                plot(app.UIAxes_E, n_values, E_profit);
+                title(app.UIAxes_E, '不同购进量下的收益期望');
+                xlabel(app.UIAxes_E, '购进量 n');
+                ylabel(app.UIAxes_E, '收益期望 E');
+
+                % 辅助函数：计算特定购进量下的收益期望
+                function E = calculateExpectedProfit(n, a, b, c, lambda)
+                    E = 0;
+                    for r = 0:n
+                        profit = r*(a-b) + (n-r)*(c-b);
+                        E = E + profit * poisspdf(r, lambda);
+                    end
+                    for r = n+1:r_max
+                        profit = n*(a-b);
+                        E = E + profit * poisspdf(r, lambda);
+                    end
+                end
+            end
+
+        You need to guide student to combine UI and your code, including creating a callback function in Matlab APP Designers. Make sure that the students say the APP work perfectly without bugs before you break Loop.
+        Ask the students if they need more helps.
+
+        Student:
+            poisspdf和poissinv报错.报错信息：未定义与 'double' 类型的输入参数相对应的函数 'poisspdf'。
+
+        You:
+            Give what the students may do that cause it. Note that the students may have not installed "Statistics and Machine Learning Toolbox", guide the students to install it.
+
+        Student:
+            我的问题已经全部解决了。
+
+        You:
+            Break Loop, conclude the program, and thank the students for use. suggest commands to use next.
+
+
