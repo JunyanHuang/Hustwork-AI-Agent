@@ -1,15 +1,12 @@
-
-
-
-# <span><h1 style = "font-family: garamond; font-size: 40px; font-style: normal; letter-spcaing: 3px; color :#fe346e; border-radius: 100px 100px; text-align:center"> 不合理作业助手第一版发布！</h1></span>
+# <span><h1 style = "font-family: garamond; font-size: 40px; font-style: normal; letter-spcaing: 3px; color :#fe346e; border-radius: 100px 100px; text-align:center"> 见鬼作业助手第一版发布！</h1></span>
 作业巨多，我懂!
 
 课设更多，我懂!
 
 论文，实验报告做不完，我都懂!
-### 就让不合理作业助手来拯救你<img src="./laugh.png" width = "30" height = "30"  align=center />
+### 就让见鬼作业助手来拯救你<img src="./laugh.png" width = "30" height = "30"  align=center />
 
-## 不合理作业助手 （Hustwork Ai Agent）: 你的作业神器！
+## 见鬼作业助手 （Hustwork Ai Agent）: 你的作业神器！
 使用GPT4，定制化作业助手。
 
 联系作者邮箱：[email](mailto:huangjy6666@gmail.com)
@@ -42,8 +39,8 @@
 
 ## 命令 Command
 1. /config <~CONFIGURATION>: [自定义用户信息](#config-自定义用户信息)
-2. /plan <topic>: 输入需要不合理作业助手完成的任务
-3. /start: 不合理作业助手开始执行任务
+2. /plan <topic>: 输入需要见鬼作业助手完成的任务
+3. /start: 见鬼作业助手开始执行任务
 4. /config_advice: 打开自定义用户指南
 5. /continue ： 继续生成后续内容
 6. /ask ~question: 提出问题
